@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    public function Place()
-        {
-            return $this->belongsToMany('App\Place');
-        }
+    public function WantPlace()
+    {
+        return $this->belongsTo('App\WantPlace');
+    }
 }

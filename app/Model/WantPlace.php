@@ -10,4 +10,9 @@ class WantPlace extends Model
     {
         return $this->belongsTo('App\User');
     }
+    
+    public function Place()
+    {
+        return $this->belongsTo('App\Place');
+    }
 }
