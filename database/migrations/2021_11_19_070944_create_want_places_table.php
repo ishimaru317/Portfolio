@@ -19,6 +19,9 @@ class CreateWantPlacesTable extends Migration
             $table->bigInteger('place_id');
             $table->boolean('is_deleted');
             $table->timestamps();
+            
+            $table->foreign('place_id')->references('id')->on('places');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
