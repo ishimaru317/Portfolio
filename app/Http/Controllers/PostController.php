@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest; 
 
 class PostController extends Controller
 {
@@ -37,10 +38,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = new Post();
-        $post->title = $request->input('title');
-        $post->content = $request->input('content');
-        $post->save();
+        $savedata = [
+        'name' => $request->name,
+        'photo' => $request->photo,
+        'comment' => $request->comment,
+        'category_id' => $request->category_id,
+    ];
+ 
+    $post = new Post;
+    $post->fill($savedata)->save();
+        
 
         return redirect()->route('posts.show', ['id' => $post->id])->with('message', 'Post was successfully created.');
     }
