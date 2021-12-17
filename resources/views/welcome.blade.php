@@ -3,7 +3,34 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <script>
+            var map;
+var marker;
+var infoWindow;
+var center = {
+   lat: 34.7019399, // 緯度
+  lng: 135.51002519999997 // 経度
+};
+function initMap() {
+ map = new google.maps.Map(document.getElementById('map'), { // #sampleに地図を埋め込む
+     center: center, // 地図の中心を指定
+     zoom: 19 // 地図のズームを指定
+   });
+ 
+ marker = new google.maps.Marker({ // マーカーの追加
+        position: center, // マーカーを立てる位置を指定
+      map: map // マーカーを立てる地図を指定
+   });
+ 
+ infoWindow = new google.maps.InfoWindow({ // 吹き出しの追加
+        content: '<div class="sample">TAM 大阪</div>' // 吹き出しに表示する内容
+  });
+ marker.addListener('click', function() { // マーカーをクリックしたとき
+     infoWindow.open(map, marker); // 吹き出しの表示
+    });
+}
+        </script>
+        
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -64,36 +91,11 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
+        <div id="map" style="height:500px"> 
+	    </div>
+	     <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPs0gCLxO7_IeDfIYLwY3fidPg4tk38pc&callback=initMap&v=weekly"
+          async
+         ></script>
     </body>
 </html>
