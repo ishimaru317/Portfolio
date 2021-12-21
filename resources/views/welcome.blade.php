@@ -35,6 +35,8 @@ function initMap() {
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- Styles -->
         <style>
@@ -91,6 +93,11 @@ function initMap() {
         </style>
     </head>
     <body>
+        <div id="app">           
+             <example-component />
+        </div>
+        <script src="{{ mix('js/app.js') }}"></script>
+
         <div id="map" style="height:500px"> 
 	    </div>
 	     <script
