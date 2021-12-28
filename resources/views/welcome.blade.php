@@ -94,15 +94,10 @@ function initMap() {
     </head>
     <body>
         <div id="app">           
-             <example-component />
+             <main-map />
         </div>
         <script src="{{ mix('js/app.js') }}"></script>
 
-        <div id="map" style="height:500px"> 
-	    </div>
-	     <script
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPs0gCLxO7_IeDfIYLwY3fidPg4tk38pc&callback=initMap&v=weekly"
-          async
-         ></script>
+    
     </body>
 </html>
