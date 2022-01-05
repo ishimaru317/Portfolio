@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Route::resource('posts', 'PostController',['only' => ['index', 'show', 'create', 'store']]);
 
+Route::resource('users', 'UserController');
+
+
 if (env('APP_ENV') === 'local') {
     URL::forceScheme('https');
 } 
