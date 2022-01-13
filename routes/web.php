@@ -20,6 +20,3 @@ Route::resource('posts', 'PostController',['only' => ['index', 'show', 'create',
 Route::resource('users', 'UserController');
 
 
-if (env('APP_ENV') === 'local') {
-    URL::forceScheme('https');
-} 

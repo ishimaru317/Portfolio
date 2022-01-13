@@ -54,6 +54,7 @@
                         name="photo"
                         class="form-control {{ $errors->has('photo') ? 'is-invalid' : '' }}"
                         type="file"
+                        accept="image/jpeg, image/png"
                     >
                     @if ($errors->has('photo'))
                         <div class="invalid-feedback">
