@@ -15,9 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-
-        return view('posts.index', compact('posts'));
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return view('posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -36,13 +35,14 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         $savedata = [
         'name' => $request->name,
         'photo' => $request->photo,
         'comment' => $request->comment,
         'category_id' => $request->category_id,
+        'place_id'=> $request->place_id,
     ];
  
     $post = new Post;
