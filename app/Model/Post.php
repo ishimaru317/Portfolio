@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,4 +10,10 @@ class Post extends Model
     {
         return $this->belongsTo('App\WantPlace');
     }
+    protected $fillable = [
+        'name',
+        'photo',
+        'comment', 
+        'category_id'
+    ];
 }

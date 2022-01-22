@@ -6,6 +6,8 @@
 
 require('./bootstrap');
 
+import * as VueGoogleMaps from 'vue2-google-maps'
+
 window.Vue = require('vue');
 
 /**
@@ -19,7 +21,16 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.use(VueGoogleMaps, {
+    load: {
+      key: 'AIzaSyDPs0gCLxO7_IeDfIYLwY3fidPg4tk38pc',
+      libraries: 'places',
+      region: 'JP',
+      language: 'ja'
+    }
+},)
+
+Vue.component('main-map', require('./components/MainMap.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
