@@ -24,7 +24,7 @@ class PlaceController extends Controller
      */
     public function create()
     {
-        //
+        return view('places.create');
     }
 
     /**
@@ -35,7 +35,20 @@ class PlaceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $savedata = [
+            'name' => $request->name,
+            'photo' => $photoPath,
+            'comment' => $request->comment,
+            'category_id' => $request->category_id,
+            'place_id'=> $request->place_id,
+        ];
+     
+        $place = new Post;
+        $place->fill($savedata)->save();
+            
+    
+            return redirect()->route('places.show', ['id' => $place->id])->with('message', 'place was successfully created.');
+        }
     }
 
     /**
@@ -46,7 +59,7 @@ class PlaceController extends Controller
      */
     public function show(Place $place)
     {
-        //
+        return view('places.show', compact('place'));
     }
 
     /**

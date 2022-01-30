@@ -36,15 +36,25 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(PostRequest $request)
-    {
+    { 
+        $photo = $request->photo;
+        if ($photo) {
+
+            //一意のファイル名を自動生成しつつ保存し、かつファイルパス（$productImagePath）を生成
+            //ここでstore()メソッドを使っているが、これは画像データをstorageに保存している
+            $photoPath = $photo->store('public/uploads');
+        } else {
+            $photoPath = "";
+        }
         $savedata = [
         'name' => $request->name,
-        'photo' => $request->photo,
+        'photo' => $photoPath,
         'comment' => $request->comment,
         'category_id' => $request->category_id,
         'place_id'=> $request->place_id,
     ];
- 
+    logger($savedata);
+
     $post = new Post;
     $post->fill($savedata)->save();
         
@@ -58,9 +68,9 @@ class PostController extends Controller
      * @param  \App\Model\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-            return view('posts.show', compact('post'));
+        return view('post.show', ['post' => Post::findOrFail($id)]);
     }
 
     /**

@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('posts', 'PostController',['only' => ['index', 'show', 'create', 'store']]);
+Route::resource('posts', 'PostController',['only' => ['index', 'show', 'create', 'store','destroy']]);
 
 Route::resource('users', 'UserController');
 

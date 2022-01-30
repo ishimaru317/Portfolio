@@ -1,7 +1,8 @@
 <h1>Posts</h1> 
 
 @foreach($posts as $post)
-    <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+    <a href="/posts/{{ $post->id }}">{{ $post->name }}</a>
+    <img class="photo" src="{{ Storage::url($post->photo) }}" alt="" width="150px" height="100px">
     <a href="/posts/{{ $post->id }}/edit">Edit</a>
     
     <form action="/posts/{{ $post->id }}" method="POST" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
